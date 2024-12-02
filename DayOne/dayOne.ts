@@ -18,6 +18,7 @@ export const dayOne = async () => {
     })
     .sort((a, b) => a - b);
 
+  /** Part 1 */
   let totalDistance = 0;
 
   for (let i = 0; i < pair1.length; i++) {
@@ -26,5 +27,18 @@ export const dayOne = async () => {
     totalDistance += distance;
   }
 
-  return `Total Distance: ${totalDistance}`;
+  /** Part 2 */
+  let total = 0;
+
+  for (let i = 0; i < pair1.length; i++) {
+    let totalOccurrences = 0;
+    for (let j = 0; j < pair2.length; j++) {
+      if (pair1[i] === pair2[j]) {
+        totalOccurrences += 1;
+      }
+    }
+    total += pair1[i] * totalOccurrences;
+  }
+
+  return `Part One: ${totalDistance}\nPart Two: ${total}`;
 };
