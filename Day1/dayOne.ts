@@ -1,7 +1,7 @@
 import { readInput } from "..";
 
 export const dayOne = async () => {
-  const input = (await readInput("DayOne/input.txt")).trim();
+  const input = (await readInput("Day1/input.txt")).trim();
 
   const pairs = input.split("\n");
 
