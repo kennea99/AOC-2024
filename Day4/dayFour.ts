@@ -27,18 +27,16 @@ const isValidDiagonal = (a: Letter, b: Letter) => {
 export const dayFour = async () => {
   const input = (await readInput("Day4/input.txt"))
     .split("\n")
-    .map((item) => item.split(""));
+    .map((item) => item.split("") as Letter[]);
 
-  const castedInput = input as Letter[][];
-
-  const rowLength = castedInput.length;
-  const columnLength = castedInput[0].length;
+  const rowLength = input.length;
+  const columnLength = input[0].length;
 
   // Part One
   let totalXmasPartOne = 0;
   for (let rowIdx = 0; rowIdx < rowLength; rowIdx++) {
     for (let colIdx = 0; colIdx < columnLength; colIdx++) {
-      const letter = castedInput[rowIdx][colIdx];
+      const letter = input[rowIdx][colIdx];
       if (letter !== "X") {
         continue;
       }
@@ -54,9 +52,9 @@ export const dayFour = async () => {
           continue;
         }
         if (
-          castedInput[rowIdx + dr * 1][colIdx + dc * 1] === "M" &&
-          castedInput[rowIdx + dr * 2][colIdx + dc * 2] === "A" &&
-          castedInput[rowIdx + dr * 3][colIdx + dc * 3] === "S"
+          input[rowIdx + dr * 1][colIdx + dc * 1] === "M" &&
+          input[rowIdx + dr * 2][colIdx + dc * 2] === "A" &&
+          input[rowIdx + dr * 3][colIdx + dc * 3] === "S"
         ) {
           totalXmasPartOne += 1;
         }
@@ -72,7 +70,7 @@ export const dayFour = async () => {
   let totalXmasPartTwo = 0;
   for (let rowIdx = 0; rowIdx < rowLength; rowIdx++) {
     for (let colIdx = 0; colIdx < columnLength; colIdx++) {
-      const letter = castedInput[rowIdx][colIdx];
+      const letter = input[rowIdx][colIdx];
       if (letter !== "A") {
         continue;
       }
@@ -80,36 +78,36 @@ export const dayFour = async () => {
         checkIfNotInBounds(
           rowIdx + upperLeft[0],
           colIdx + upperLeft[1],
-          castedInput
+          input
         ) ||
         checkIfNotInBounds(
           rowIdx + upperRight[0],
           colIdx + upperRight[1],
-          castedInput
+          input
         ) ||
         checkIfNotInBounds(
           rowIdx + lowerLeft[0],
           colIdx + lowerLeft[1],
-          castedInput
+          input
         ) ||
         checkIfNotInBounds(
           rowIdx + lowerRight[0],
           colIdx + lowerRight[1],
-          castedInput
+          input
         )
       ) {
         continue;
       }
 
       const upperLeftLetter =
-        castedInput[rowIdx + upperLeft[0]][colIdx + upperLeft[1]];
+        input[rowIdx + upperLeft[0]][colIdx + upperLeft[1]];
       const lowerRightLetter =
-        castedInput[rowIdx + lowerRight[0]][colIdx + lowerRight[1]];
+        input[rowIdx + lowerRight[0]][colIdx + lowerRight[1]];
 
       const upperRightLetter =
-        castedInput[rowIdx + upperRight[0]][colIdx + upperRight[1]];
+        input[rowIdx + upperRight[0]][colIdx + upperRight[1]];
       const lowerLeftLetter =
-        castedInput[rowIdx + lowerLeft[0]][colIdx + lowerLeft[1]];
+        input[rowIdx + lowerLeft[0]][colIdx + lowerLeft[1]];
 
       if (
         isValidDiagonal(upperLeftLetter, lowerRightLetter) &&
