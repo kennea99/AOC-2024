@@ -43,12 +43,10 @@ export const dayFour = async () => {
       for (let d = 0; d < directions.length; d++) {
         const dr = directions[d][0];
         const dc = directions[d][1];
-        if (
-          rowIdx + dr * 3 > rowLength - 1 ||
-          rowIdx + dr * 3 < 0 ||
-          colIdx + dc * 3 > columnLength - 1 ||
-          colIdx + dc * 3 < 0
-        ) {
+
+        const maxRowIdx = rowIdx + dr * 3;
+        const maxColIdx = colIdx + dc * 3;
+        if (checkIfNotInBounds(maxRowIdx, maxColIdx, input)) {
           continue;
         }
         if (

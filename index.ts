@@ -47,7 +47,7 @@ export const readInput = async (filename: string) => {
 /**
  * Day Four: https://adventofcode.com/2024/day/4
  */
-// const answer4 = await dayFour();
-// console.log("Day Four");
-// console.log(answer4);
-// console.log("----------------------------");
+const answer4 = await dayFour();
+console.log("Day Four");
+console.log(answer4);
+console.log("----------------------------");
